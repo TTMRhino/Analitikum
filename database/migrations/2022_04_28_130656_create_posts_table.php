@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('forum', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('message');
-            $table->integer('ref_message');
-            $table->timestamps();
+            $table->text('message');       
+            $table->integer('previous_post_id')->nullable();
+            $table->timestamp('timestamp', $precision = 0)->nullable($value = true);
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forum');
+        Schema::dropIfExists('posts');
     }
 };

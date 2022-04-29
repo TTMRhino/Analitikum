@@ -13,6 +13,7 @@ use App\Http\Controllers\Forun\HomeController;
 |
 */
 Route::get('/', [App\Http\Controllers\Forum\HomeController::class, 'index'])->name('home');
+Route::post('/',[App\Http\Controllers\Forum\HomeController::class, 'store'])->name('Posts.store');
 
 /*Route::get('/', function () {
     return view('welcome');
