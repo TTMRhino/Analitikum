@@ -3,6 +3,7 @@
 @section('title', 'Главная')
 
 @section('content')
+<div id="post">
 @if(session('success'))
 <div class="alert alert-success" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-hidden></button>
@@ -34,7 +35,7 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="">Новое сообщение</button>
 
           <form action="{{ route( 'Posts.store')  }}" method="POST" >
-            @csrf 
+           
 
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -79,5 +80,5 @@
   </script>
 
  </div>
-
+</div>
 @endsection

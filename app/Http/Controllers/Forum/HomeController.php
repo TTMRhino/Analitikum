@@ -44,7 +44,12 @@ class HomeController extends Controller
 
         $post->save();
 
+
+        $posts = Posts::whereNull('previous_post_id')->with('children')->get();
+
+      
+      
         //return redirect()->back()->withSuccess('Post created!');
-        return response()->json(['success'=>'Got Simple Ajax Request.']);
+        return response()->json(['success'=>'Post posted!']);
     }
 }
