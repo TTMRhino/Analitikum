@@ -36,6 +36,18 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         //dd($request);
+        $validator = \Validator::make($request->all(), [
+            'name' => 'required|alpha_dash|max:20',
+            'message' => 'required|string|max:500',
+            'previous_post_id' => 'numeric|nullable',
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all()]);
+        }
+        
+
         $post= new Posts();
         $post->name = $request->name;
         $post->message = $request->message;

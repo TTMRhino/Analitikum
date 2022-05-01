@@ -29,8 +29,15 @@ $(document).ready(function() {
             url: "/",
             data: { name: name, message: message, previous_post_id: previous_post_id },
             success: function(data) {
-                $('#exampleModal').modal('hide');
+                //$('#exampleModal').modal('toggle');
+                jQuery.each(data.errors, function(key, value) {
+                    jQuery('.alert-danger').show();
+                    jQuery('.alert-danger').append('<p>' + value + '</p>');
+                });
                 $("#post").load('/');
+            },
+            error: function(error) {
+                console.error(error)
             }
 
         });
